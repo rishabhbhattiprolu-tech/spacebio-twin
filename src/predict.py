@@ -61,6 +61,12 @@ if __name__ == "__main__":
         exercise="low"
     )
 
+    print("\nMission Profile:")
+    print(result["mission_profile"])
+
+    print("\nPredicted Risk Scores:")
+    print(result["risk_scores"])
+
     print("\nBiological Interpretations:")
     for key, item in result["biological_interpretations"].items():
         print(f"\n{item['display_name']}")
@@ -69,12 +75,6 @@ if __name__ == "__main__":
         print("Pathways:", ", ".join(item["pathways"]))
         print(f"Interpretation: {item['interpretation']}")
         print(f"Why it matters: {item['why_it_matters']}")
-        
-    print("\nMission Profile:")
-    print(result["mission_profile"])
-
-    print("\nPredicted Risk Scores:")
-    print(result["risk_scores"])
 
     print("\nCountermeasure Hypotheses:")
     for item in result["countermeasure_hypotheses"]:
@@ -83,5 +83,3 @@ if __name__ == "__main__":
         print(f"Priority: {item['priority']}")
         print(f"Hypothesis: {item['hypothesis']}")
         print(f"Rationale: {item['rationale']}")
-
-
