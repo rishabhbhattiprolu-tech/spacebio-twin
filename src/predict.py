@@ -1,5 +1,6 @@
 import pandas as pd
 import joblib
+from evidence import interpret_risk_scores
 
 from countermeasures import generate_countermeasures
 
@@ -38,6 +39,7 @@ def predict_mission(duration_days, radiation, shielding, exercise):
     }
 
     countermeasures = generate_countermeasures(risk_scores)
+    biological_interpretations = interpret_risk_scores(risk_scores)
 
     return {
         "mission_profile": {
@@ -47,10 +49,10 @@ def predict_mission(duration_days, radiation, shielding, exercise):
             "exercise": exercise
         },
         "risk_scores": risk_scores,
-        "countermeasure_hypotheses": countermeasures
+        "countermeasure_hypotheses": countermeasures,
+        "biological_interpretations": biological_interpretations
     }
-
-
+    
 if __name__ == "__main__":
     result = predict_mission(
         duration_days=365,
@@ -59,6 +61,15 @@ if __name__ == "__main__":
         exercise="low"
     )
 
+    print("\nBiological Interpretations:")
+    for key, item in result["biological_interpretations"].items():
+        print(f"\n{item['display_name']}")
+        print(f"Score: {item['score']}")
+        print(f"Risk Level: {item['risk_level']}")
+        print("Pathways:", ", ".join(item["pathways"]))
+        print(f"Interpretation: {item['interpretation']}")
+        print(f"Why it matters: {item['why_it_matters']}")
+        
     print("\nMission Profile:")
     print(result["mission_profile"])
 
@@ -72,3 +83,5 @@ if __name__ == "__main__":
         print(f"Priority: {item['priority']}")
         print(f"Hypothesis: {item['hypothesis']}")
         print(f"Rationale: {item['rationale']}")
+
+
