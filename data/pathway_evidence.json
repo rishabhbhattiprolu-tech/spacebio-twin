@@ -1,0 +1,32 @@
+{
+  "dna_damage": {
+    "display_name": "DNA Damage",
+    "pathways": ["DNA Repair", "TP53 Signaling", "ATM/ATR Damage Response"],
+    "interpretation": "High radiation exposure and long mission duration can increase predicted stress on DNA repair systems.",
+    "why_it_matters": "DNA damage response pathways are important for genome stability and long-term cancer risk monitoring."
+  },
+  "mitochondrial_stress": {
+    "display_name": "Mitochondrial Stress",
+    "pathways": ["Oxidative Phosphorylation", "Mitochondrial Metabolism", "Reactive Oxygen Species Response"],
+    "interpretation": "Mission stressors may disrupt mitochondrial energy production and increase oxidative stress.",
+    "why_it_matters": "Mitochondrial dysfunction is linked to fatigue, immune changes, aging biology, and cellular stress."
+  },
+  "immune_dysfunction": {
+    "display_name": "Immune Dysfunction",
+    "pathways": ["Interferon Signaling", "Innate Immune Response", "T Cell Activation"],
+    "interpretation": "Long-duration spaceflight may alter immune regulation, especially under stress and reduced physiological stability.",
+    "why_it_matters": "Immune dysregulation can affect infection response, inflammation, and recovery from cellular damage."
+  },
+  "inflammation": {
+    "display_name": "Inflammation",
+    "pathways": ["NF-kB Signaling", "Cytokine Signaling", "Inflammatory Response"],
+    "interpretation": "Radiation and prolonged environmental stress may increase inflammatory signaling.",
+    "why_it_matters": "Chronic inflammation is connected to tissue stress, immune imbalance, and aging-related disease pathways."
+  },
+  "senescence": {
+    "display_name": "Cellular Senescence",
+    "pathways": ["Cell Cycle Arrest", "p53/p21 Signaling", "Senescence-Associated Secretory Phenotype"],
+    "interpretation": "Long missions with elevated radiation may increase predicted aging-associated cellular stress.",
+    "why_it_matters": "Senescence is relevant to tissue aging, inflammation, cancer biology, and long-term astronaut health."
+  }
+}
