@@ -1,6 +1,15 @@
 from predict import predict_mission
 
 
+DISPLAY_NAMES = {
+    "dna_damage": "DNA Damage",
+    "mitochondrial_stress": "Mitochondrial Stress",
+    "immune_dysfunction": "Immune Dysfunction",
+    "inflammation": "Inflammation",
+    "senescence": "Cellular Senescence"
+}
+
+
 def calculate_change(baseline_scores, modified_scores):
     changes = {}
 
@@ -28,40 +37,22 @@ def calculate_change(baseline_scores, modified_scores):
 
 def summarize_comparison(risk_changes):
     decreased = []
-    increased = []
 
     for risk, values in risk_changes.items():
-        clean_name = risk.replace("_", " ").title()
-        difference = values["difference"]
-
-        if difference < 0:
-            decreased.append((clean_name, abs(difference)))
-        elif difference > 0:
-            increased.append((clean_name, difference))
+        if values["difference"] < 0:
+            decreased.append((DISPLAY_NAMES[risk], abs(values["difference"])))
 
     decreased = sorted(decreased, key=lambda x: x[1], reverse=True)
-    increased = sorted(increased, key=lambda x: x[1], reverse=True)
 
-    summary_parts = []
+    if not decreased:
+        return "The modified mission produced no major reduction in predicted biological risk."
 
-    if decreased:
-        top_decreases = decreased[:2]
-        decrease_text = " and ".join(
-            [f"{name} by {change} points" for name, change in top_decreases]
-        )
-        summary_parts.append(f"The modified mission reduced {decrease_text}.")
+    top_decreases = decreased[:2]
+    decrease_text = " and ".join(
+        [f"{name} by {change} points" for name, change in top_decreases]
+    )
 
-    if increased:
-        top_increases = increased[:2]
-        increase_text = " and ".join(
-            [f"{name} by {change} points" for name, change in top_increases]
-        )
-        summary_parts.append(f"However, it increased {increase_text}.")
-
-    if not summary_parts:
-        return "The modified mission produced no major change in predicted biological risk."
-
-    return " ".join(summary_parts)
+    return f"The modified mission reduced {decrease_text}."
 
 
 def compare_missions(baseline_mission, modified_mission):
@@ -76,11 +67,27 @@ def compare_missions(baseline_mission, modified_mission):
     return {
         "baseline_mission": baseline_mission,
         "modified_mission": modified_mission,
-        "baseline_risks": baseline_prediction["risk_scores"],
-        "modified_risks": modified_prediction["risk_scores"],
         "risk_changes": changes,
         "summary": summarize_comparison(changes)
     }
+
+
+def print_comparison(scenario_name, comparison):
+    print(f"\n=== Scenario: {scenario_name} ===")
+
+    print("\nModified Mission:")
+    print(comparison["modified_mission"])
+
+    print("\nRisk Score Changes:")
+    for risk, values in comparison["risk_changes"].items():
+        name = DISPLAY_NAMES[risk]
+        print(
+            f"{name}: {values['baseline']} → {values['modified']} "
+            f"({values['difference']})"
+        )
+
+    print("\nSummary:")
+    print(comparison["summary"])
 
 
 if __name__ == "__main__":
@@ -91,33 +98,34 @@ if __name__ == "__main__":
         "exercise": "low"
     }
 
-    improved_shielding_mission = {
-        "duration_days": 365,
-        "radiation": "high",
-        "shielding": "high",
-        "exercise": "low"
+    scenarios = {
+        "Improved Shielding": {
+            "duration_days": 365,
+            "radiation": "high",
+            "shielding": "high",
+            "exercise": "low"
+        },
+        "Improved Exercise": {
+            "duration_days": 365,
+            "radiation": "high",
+            "shielding": "low",
+            "exercise": "high"
+        },
+        "Shorter Mission": {
+            "duration_days": 180,
+            "radiation": "high",
+            "shielding": "low",
+            "exercise": "low"
+        }
     }
 
-    comparison = compare_missions(
-        baseline_mars_mission,
-        improved_shielding_mission
-    )
-
     print("\nBaseline Mission:")
-    print(comparison["baseline_mission"])
+    print(baseline_mars_mission)
 
-    print("\nModified Mission:")
-    print(comparison["modified_mission"])
+    for scenario_name, modified_mission in scenarios.items():
+        comparison = compare_missions(
+            baseline_mars_mission,
+            modified_mission
+        )
 
-    print("\nRisk Score Changes:")
-    for risk, values in comparison["risk_changes"].items():
-        clean_name = risk.replace("_", " ").title()
-
-        print(f"\n{clean_name}")
-        print(f"Baseline: {values['baseline']}")
-        print(f"Modified: {values['modified']}")
-        print(f"Change: {values['difference']}")
-        print(f"Direction: {values['direction']}")
-
-    print("\nSummary:")
-    print(comparison["summary"])
+        print_comparison(scenario_name, comparison)
