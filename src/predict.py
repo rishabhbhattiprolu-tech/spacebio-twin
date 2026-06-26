@@ -75,6 +75,8 @@ if __name__ == "__main__":
         print("Pathways:", ", ".join(item["pathways"]))
         print(f"Interpretation: {item['interpretation']}")
         print(f"Why it matters: {item['why_it_matters']}")
+        print(f"NASA connection: {item['nasa_connection']}")
+        print(f"Evidence source: {item['evidence_source']}")
 
     print("\nCountermeasure Hypotheses:")
     for item in result["countermeasure_hypotheses"]:
