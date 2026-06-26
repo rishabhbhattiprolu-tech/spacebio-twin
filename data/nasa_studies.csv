@@ -1,0 +1,5 @@
+study_id,title,pathway_relevance,why_used,source
+OSD-343,Comprehensive multi-omics analysis reveals mitochondrial stress as a central biological hub for spaceflight impact,mitochondrial_stress;inflammation;senescence,Supports mitochondrial stress as a major spaceflight biology signal,NASA OSDR / Cell 2020
+OSD-366,Radiation-induced DNA damage phenotype dataset,dna_damage,Supports radiation-linked DNA damage modeling,NASA OSDR
+OSD-689,Single-cell analysis identifies conserved features of immune dysfunction in simulated microgravity and spaceflight,immune_dysfunction;inflammation,Supports immune dysfunction and interferon/inflammatory pathway modeling,NASA OSDR
+OSD-129,T cell activation in microgravity compared to 1g,immune_dysfunction,Supports impaired immune/T-cell activation under microgravity-relevant conditions,NASA OSDR
