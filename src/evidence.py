@@ -32,7 +32,9 @@ def interpret_risk_scores(risk_scores):
             "risk_level": risk_level,
             "pathways": risk_info["pathways"],
             "interpretation": risk_info["interpretation"],
-            "why_it_matters": risk_info["why_it_matters"]
+            "why_it_matters": risk_info["why_it_matters"],
+            "nasa_connection": risk_info["nasa_connection"],
+            "evidence_source": risk_info["evidence_source"]
         }
 
     return interpretations
@@ -56,3 +58,5 @@ if __name__ == "__main__":
         print("Pathways:", ", ".join(item["pathways"]))
         print("Interpretation:", item["interpretation"])
         print("Why it matters:", item["why_it_matters"])
+        print("NASA connection:", item["nasa_connection"])
+        print("Evidence source:", item["evidence_source"])

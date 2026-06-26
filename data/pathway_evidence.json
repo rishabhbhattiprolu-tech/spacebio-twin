@@ -2,31 +2,41 @@
   "dna_damage": {
     "display_name": "DNA Damage",
     "pathways": ["DNA Repair", "TP53 Signaling", "ATM/ATR Damage Response"],
-    "interpretation": "High radiation exposure and long mission duration can increase predicted stress on DNA repair systems.",
-    "why_it_matters": "DNA damage response pathways are important for genome stability and long-term cancer risk monitoring."
+    "interpretation": "Elevated radiation exposure and long mission duration may increase predicted DNA damage response activity.",
+    "why_it_matters": "DNA damage response pathways are important for genome stability, radiation biology, and long-term cancer risk monitoring.",
+    "nasa_connection": "NASA GeneLab and space biology resources discuss space radiation as a driver of DNA damage and stress-response biology.",
+    "evidence_source": "NASA GeneLab / OSDR space radiation and omics studies"
   },
   "mitochondrial_stress": {
     "display_name": "Mitochondrial Stress",
     "pathways": ["Oxidative Phosphorylation", "Mitochondrial Metabolism", "Reactive Oxygen Species Response"],
-    "interpretation": "Mission stressors may disrupt mitochondrial energy production and increase oxidative stress.",
-    "why_it_matters": "Mitochondrial dysfunction is linked to fatigue, immune changes, aging biology, and cellular stress."
+    "interpretation": "Spaceflight-related stressors may disrupt mitochondrial energy production and increase oxidative stress.",
+    "why_it_matters": "A major multi-omics spaceflight analysis identified mitochondrial stress as a central biological hub of spaceflight impact.",
+    "nasa_connection": "OSD-343 is associated with the study 'Comprehensive multi-omics analysis reveals mitochondrial stress as a central biological hub for spaceflight impact.'",
+    "evidence_source": "NASA OSDR OSD-343 / Cell 2020 multi-omics spaceflight analysis"
   },
   "immune_dysfunction": {
     "display_name": "Immune Dysfunction",
     "pathways": ["Interferon Signaling", "Innate Immune Response", "T Cell Activation"],
-    "interpretation": "Long-duration spaceflight may alter immune regulation, especially under stress and reduced physiological stability.",
-    "why_it_matters": "Immune dysregulation can affect infection response, inflammation, and recovery from cellular damage."
+    "interpretation": "Long-duration spaceflight may alter immune regulation, especially under radiation, stress, and altered physiological conditions.",
+    "why_it_matters": "Immune dysregulation is relevant to infection response, inflammation, recovery from damage, and astronaut health monitoring.",
+    "nasa_connection": "Spaceflight and analog studies have reported altered immune response and inflammatory signaling under space-relevant stressors.",
+    "evidence_source": "NASA GeneLab / OSDR immune and spaceflight stress studies"
   },
   "inflammation": {
     "display_name": "Inflammation",
     "pathways": ["NF-kB Signaling", "Cytokine Signaling", "Inflammatory Response"],
     "interpretation": "Radiation and prolonged environmental stress may increase inflammatory signaling.",
-    "why_it_matters": "Chronic inflammation is connected to tissue stress, immune imbalance, and aging-related disease pathways."
+    "why_it_matters": "Chronic inflammation is connected to immune imbalance, tissue stress, aging biology, and disease risk.",
+    "nasa_connection": "Space radiation and microgravity-related studies have linked space-relevant stressors to cytokine and inflammatory responses.",
+    "evidence_source": "NASA GeneLab / OSDR radiation and inflammation studies"
   },
   "senescence": {
     "display_name": "Cellular Senescence",
     "pathways": ["Cell Cycle Arrest", "p53/p21 Signaling", "Senescence-Associated Secretory Phenotype"],
     "interpretation": "Long missions with elevated radiation may increase predicted aging-associated cellular stress.",
-    "why_it_matters": "Senescence is relevant to tissue aging, inflammation, cancer biology, and long-term astronaut health."
+    "why_it_matters": "Senescence overlaps with aging, inflammation, tissue dysfunction, and cancer biology.",
+    "nasa_connection": "Spaceflight biology studies connect radiation, mitochondrial stress, DNA damage, and aging-associated pathway changes.",
+    "evidence_source": "NASA OSDR / GeneLab aging and mitochondrial stress studies"
   }
 }
