@@ -46,7 +46,8 @@ def optimize_mission(baseline):
             "mission": candidate,
             "overall_risk": score,
             "improvement": improvement,
-            "risk_scores": prediction["risk_scores"]
+            "risk_scores": prediction["risk_scores"],
+            "prediction": prediction
         })
 
     results = sorted(
@@ -57,10 +58,12 @@ def optimize_mission(baseline):
     return {
         "baseline_mission": baseline,
         "baseline_overall_risk": baseline_score,
+        "baseline_prediction": baseline_prediction,
         "best_missions": results[:5],
         "summary": summarize_optimization({
         "baseline_overall_risk": baseline_score,
         "best_missions": results[:5]
+        
 })
     }
 
