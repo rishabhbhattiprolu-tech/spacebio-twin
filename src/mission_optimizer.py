@@ -57,9 +57,31 @@ def optimize_mission(baseline):
     return {
         "baseline_mission": baseline,
         "baseline_overall_risk": baseline_score,
+        "best_missions": results[:5],
+        "summary": summarize_optimization({
+        "baseline_overall_risk": baseline_score,
         "best_missions": results[:5]
+})
     }
 
+def summarize_optimization(optimization):
+    baseline_score = optimization["baseline_overall_risk"]
+    best = optimization["best_missions"][0]
+
+    best_score = best["overall_risk"]
+    improvement = best["improvement"]
+    percent_improvement = round((improvement / baseline_score) * 100, 1)
+
+    mission = best["mission"]
+
+    summary = (
+        f"The optimizer reduced predicted overall biological risk "
+        f"from {baseline_score} to {best_score}, a {percent_improvement}% improvement. "
+        f"The best mission profile uses {mission['duration_days']} days, "
+        f"{mission['shielding']} shielding, and {mission['exercise']} exercise compliance."
+    )
+
+    return summary
 
 if __name__ == "__main__":
     baseline_mars_mission = {
@@ -82,4 +104,5 @@ if __name__ == "__main__":
         print("Overall Risk:", result["overall_risk"])
         print("Improvement:", result["improvement"])
         print("Risk Scores:", result["risk_scores"])
-        
+        print("\nOptimization Summary:")
+        print(optimization["summary"])
