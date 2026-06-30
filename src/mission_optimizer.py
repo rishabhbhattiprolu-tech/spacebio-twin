@@ -104,5 +104,6 @@ if __name__ == "__main__":
         print("Overall Risk:", result["overall_risk"])
         print("Improvement:", result["improvement"])
         print("Risk Scores:", result["risk_scores"])
-        print("\nOptimization Summary:")
-        print(optimization["summary"])
+        
+    print("\nOptimization Summary:")
+    print(optimization["summary"])
